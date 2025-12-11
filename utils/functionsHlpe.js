@@ -1,27 +1,24 @@
 import { questionInt } from "readline-sync"
 import { stockMarket } from "../DB/db.js"
-import { searchStock } from "./functions.js"
 
-export function buyingShare(identifier){
-    const share = searchStock(identifier)
+export function buyingShare(share){
     const amount = questionInt("How many shares do you want to buy? ")
     if(availabilityCheck(share, amount)){
-        share.availabilityCheck -= amount
+        share.availableStocks -= amount
         console.table(share)
         priceCalculation(share.category, amount, true)
     } else console.log("There are not enough shares for sale.")
 }
 
-export function sellingShare(identifier){
-    const share = searchStock(identifier)
+export function sellingShare(share){
     const amount = questionInt("How many shares do you want to sell? ")
-    share.availabilityCheck += amount
+    share.availableStocks += amount
     priceCalculation(share.category, amount, false)
     console.table(share)
 }
 
 export function availabilityCheck(share, amount){
-    if(share.availabilityCheck >= amount) return true
+    if(share.availableStocks >= amount) {return true}
     else return false
 }
 
@@ -33,3 +30,8 @@ export function priceCalculation(category, amount, above){
         }
     })
 }
+
+// `// ● טיפול בפעולות לא חוקיות ובמזהים לא ידועים
+// `// ● עדכון ספירת המניות הזמינה
+// // ● עדכון מחיר המניה שנבחרה
+// // ● עדכון המחירים של כל המניות באותה קטגוריה
