@@ -8,7 +8,7 @@ function main(){
             case 1: stockSearch(); break;
             case 2: showingStock(); break;
             case 3: buyingShares(); break;
-            case 4: start = false;
+            case 4: start = false; break;
             default: console.log("Wrong choice.")
         }
     } while(start);
