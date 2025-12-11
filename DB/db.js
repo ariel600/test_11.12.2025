@@ -739,5 +739,3 @@ export const stockMarket = {
         },
     ],
 };
-
-
