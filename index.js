@@ -13,4 +13,4 @@ function main(){
         }
     } while(start);
 }
-main
+main()
