@@ -5,8 +5,8 @@ export function buyingShare(share){
     const amount = questionInt("How many shares do you want to buy? ")
     if(availabilityCheck(share, amount)){
         share.availableStocks -= amount
-        console.table(share)
         priceCalculation(share.category, amount, true)
+        console.table(share)
     } else console.log("There are not enough shares for sale.")
 }
 
@@ -18,7 +18,7 @@ export function sellingShare(share){
 }
 
 export function availabilityCheck(share, amount){
-    if(share.availableStocks >= amount) {return true}
+    if(share.availableStocks >= amount) return true
     else return false
 }
 

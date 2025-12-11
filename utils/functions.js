@@ -14,18 +14,11 @@ export function filterStocksByPrice(givenPrice, above){
 }
 
 export function OperateOnStock(operation, identifier){
-    if(operation === "Buy"){
-        buyingShare(identifier)
-    } else sellingShare(identifier)
+    const share = searchStock(identifier)
+    if(share == false) {
+        console.log("No data found");
+        return
+    } if (operation === "Buy"){
+        buyingShare(share[0])
+    } else sellingShare(share[0])
 }
-
-// מטפל בקנייה או מכירה של מניה.
-// דרישות:
-// ● הפעולה חייבת להיות "קנייה" או "מכירה"
-// ● המזהה יכול להיות שם או מזהה
-// ● טיפול בפעולות לא חוקיות ובמזהים לא ידועים
-// ● שאל את המשתמש כמה יחידות לקנות או למכור
-// ● עדכון ספירת המניות הזמינה
-// ● עדכון מחיר המניה שנבחרה
-// ● עדכון המחירים של כל המניות באותה קטגוריה
-// לא מחזיר דבר
