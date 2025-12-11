@@ -1,4 +1,5 @@
 import { stockMarket } from "../DB/db.js";
+import { buyingShare, sellingShare } from "./functionsHlpe.js";
 
 export function searchStock(identifier){
     return stockMarket.stocks.filter((stock) => stock.name === identifier || stock.id === identifier)
@@ -13,8 +14,11 @@ export function filterStocksByPrice(givenPrice, above){
 }
 
 export function OperateOnStock(operation, identifier){
-
+    if(operation === "Buy"){
+        buyingShare(identifier)
+    } else sellingShare(identifier)
 }
+
 // מטפל בקנייה או מכירה של מניה.
 // דרישות:
 // ● הפעולה חייבת להיות "קנייה" או "מכירה"
@@ -25,4 +29,3 @@ export function OperateOnStock(operation, identifier){
 // ● עדכון מחיר המניה שנבחרה
 // ● עדכון המחירים של כל המניות באותה קטגוריה
 // לא מחזיר דבר
-

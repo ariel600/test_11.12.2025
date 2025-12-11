@@ -4,9 +4,7 @@ import { givenPrice, menuBuyOrSell, menuGivenPrice } from "./prints.js";
 
 export function stockSearch(){
     const result = searchStock(question("Enter the value you want to search for (ID or name): "))
-    if(result){
-        console.table(result)
-    } else console.log("No data found.")
+    console.table(result)
 };
 
 export function showingStock(){
@@ -14,9 +12,7 @@ export function showingStock(){
     const choice = menuGivenPrice()
     if(choice === 1) {result = filterStocksByPrice(givenPrice(), true)}
     else {result = filterStocksByPrice(givenPrice(), false)}
-    if(result){
-        console.table(result)
-    } else console.log("No data found.")
+    console.table(result)
 };
 
 export function buyingShares(){
